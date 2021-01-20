@@ -242,6 +242,7 @@ function getMappedOutputTypeName(
     "MaxAggregateOutputType",
     "AvgAggregateOutputType",
     "SumAggregateOutputType",
+    "GroupByOutputType",
   ].find(type => outputTypeName.includes(type));
   if (dedicatedTypeSuffix) {
     const modelName = outputTypeName.replace(dedicatedTypeSuffix, "");
@@ -333,6 +334,7 @@ function selectInputTypeFromTypes(dmmfDocument: DmmfDocument) {
   return (
     inputTypes: PrismaDMMF.SchemaArgInputType[],
   ): DMMF.SchemaArgInputType => {
+    const { useUncheckedScalarInputs } = dmmfDocument.options;
     let possibleInputTypes: PrismaDMMF.SchemaArgInputType[];
     possibleInputTypes = inputTypes.filter(
       it => it.location === "inputObjectTypes",
@@ -344,7 +346,12 @@ function selectInputTypeFromTypes(dmmfDocument: DmmfDocument) {
       possibleInputTypes = inputTypes;
     }
     const selectedInputType =
-      possibleInputTypes.find(it => it.isList) || possibleInputTypes[0];
+      possibleInputTypes.find(it => it.isList) ||
+      (useUncheckedScalarInputs
+        ? possibleInputTypes.find(
+            it => !(it.type as string).includes("Unchecked"),
+          ) ?? possibleInputTypes[0]
+        : possibleInputTypes[0]);
 
     let inputType = selectedInputType.type as string;
     if (selectedInputType.location === "enumTypes") {
