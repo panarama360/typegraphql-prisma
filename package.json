@@ -3,6 +3,7 @@
   "version": "0.10.0",
   "scripts": {
     "build": "tsc",
+    "install": "tsc",
     "package:build": "./package.sh",
     "package:publish": "cd package *&& npm publish",
     "check:type": "tsc --noEmit",

@@ -1,6 +1,6 @@
 ![integration logo](https://raw.githubusercontent.com/MichalLytek/typegraphql-prisma/main/img/integration.png)
 
-# TypeGraphQL & Prisma 2 integration
+# TypeGraphQL & Prisma 2 integration [NestJs decorators]
 
 Prisma 2 generator to emit TypeGraphQL types and CRUD resolvers from your Prisma 2 schema
 
