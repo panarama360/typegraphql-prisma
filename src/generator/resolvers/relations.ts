@@ -121,7 +121,7 @@ export default function generateRelationsResolverClassesFromModel(
               name: "ctx",
               // TODO: import custom `ContextType`
               type: "any",
-              decorators: [{ name: "TypeGraphQL.Ctx", arguments: [] }],
+              decorators: [{ name: "TypeGraphQL.Context", arguments: [] }],
             },
             ...(!field.argsTypeName
               ? []
