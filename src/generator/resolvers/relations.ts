@@ -101,7 +101,7 @@ export default function generateRelationsResolverClassesFromModel(
           returnType: `Promise<${field.fieldTSType}>`,
           decorators: [
             {
-              name: "TypeGraphQL.FieldResolver",
+              name: "TypeGraphQL.ResolveField",
               arguments: [
                 `_type => ${field.typeGraphQLType}`,
                 Writers.object({
