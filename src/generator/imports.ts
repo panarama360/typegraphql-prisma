@@ -177,6 +177,10 @@ export function generateIndexFile(
       moduleSpecifier: `@nestjs/common`,
       namedImports: ["Provider"],
     },
+    {
+      moduleSpecifier: `type-graphql`,
+      namedImports: ["NonEmptyArray"],
+    },
     ...(hasSomeRelations
       ? [
           {
